@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Text;
 
 namespace HalozatBeadando
 {
@@ -18,6 +20,15 @@ namespace HalozatBeadando
             int alhalozatokSzama = GetDbBeker("Adja meg az alhálózatok darabszámát: ");
             AlhalozatokBeker(alhalozatokSzama, kiinduloCim);
             HalozatokKiir();
+            CreateFile();
+        }
+
+        static void CreateFile()
+        {
+            StreamWriter sw = new StreamWriter("outputResult.csv", false, Encoding.UTF8);
+            sw.WriteLine("Hálózat neve;Hálózati cím;Alhálóhazati maszkja;Szórási címe");
+            alhalozatok.ForEach(x => sw.WriteLine($"{x.Nev};{x.Cim};{x.Maszk};{x.SzorasCim}"));
+            sw.Close();
         }
 
         static void HalozatokKiir()

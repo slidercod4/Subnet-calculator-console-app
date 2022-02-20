@@ -85,8 +85,7 @@ namespace HalozatBeadando
             {
                 if (binaryIP[i] != '0')
                 {
-                    binaryIP = binaryIP.Remove(i, 1);
-                    binaryIP = binaryIP.Insert(i, "0");
+                    binaryIP = binaryIP.Remove(i, 1).Insert(i, "0");
                 }
                 i--;
             }
